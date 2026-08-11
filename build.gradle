@@ -1,0 +1,38 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+	withSourcesJar()
+	withJavadocJar()
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	api "com.google.code.gson:gson:${gson_version}"
+
+	testImplementation platform('org.junit:junit-bom:5.10.2')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+			groupId = project.group
+			artifactId = 'skymelloo-api-client'
+			version = project.version
+		}
+	}
+}

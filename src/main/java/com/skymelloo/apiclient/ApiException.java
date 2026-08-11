@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Maja Bekurdts (hexedmaya)
+// SPDX-License-Identifier: MIT
+
 package com.skymelloo.apiclient;
 
 /** A failed API call - either a real HTTP error status (see {@link #statusCode}) or a network-level failure ({@code statusCode == -1}). */

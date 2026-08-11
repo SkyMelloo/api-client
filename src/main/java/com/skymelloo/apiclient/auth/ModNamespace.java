@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Maja Bekurdts (hexedmaya)
+// SPDX-License-Identifier: MIT
+
 package com.skymelloo.apiclient.auth;
 
 /** Distinguishes SkyMelloo from MellooEssentials on shared endpoints (settings namespace, presence marker) - see section 4. */

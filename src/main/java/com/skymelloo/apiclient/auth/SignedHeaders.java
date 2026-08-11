@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Maja Bekurdts (hexedmaya)
+// SPDX-License-Identifier: MIT
+
 package com.skymelloo.apiclient.auth;
 
 /** The 4 headers a signed request must carry - see {@link ModIdentity#sign}. */

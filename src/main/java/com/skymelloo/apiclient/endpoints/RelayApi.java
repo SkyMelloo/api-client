@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Maja Bekurdts (hexedmaya)
+// SPDX-License-Identifier: MIT
+
 package com.skymelloo.apiclient.endpoints;
 
 import com.google.gson.JsonArray;

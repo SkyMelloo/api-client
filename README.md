@@ -110,6 +110,10 @@ Every request goes through one shared queue (`SkyMellooClient.Builder#rateLimit`
 - Server-Sent Events consumption for `presence/stream` (documented as a website-facing implementation detail, not meant for mod clients).
 - Anything the [compatibility rules](https://github.com/SkyMelloo/developer-api/blob/main/DEVELOPER_API.md#18-compatibility-rules-for-forks) leave to the embedding mod - most notably rule 9: **your mod is responsible for actually showing the user `unofficialBuildMessage`/`updateAvailableMessage` when non-null.** This library surfaces the field; it doesn't render UI.
 
+## Questions
+
+Using this library and have a question? Start a thread on [sky.melloo.me/community](https://sky.melloo.me/community), or if you'd rather ask privately: [sky.melloo.me/contact/ask](https://sky.melloo.me/contact/ask).
+
 ## License
 
 [MIT](LICENSE). Copyright (c) 2026 Maja Bekurdts (hexedmaya).

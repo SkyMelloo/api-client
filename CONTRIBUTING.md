@@ -8,9 +8,10 @@
   (shared policy across the whole SkyMelloo org) - never a public issue or PR.
 - API behavior questions (not the client library itself): see
   [developer-api](https://github.com/SkyMelloo/developer-api).
-- Questions about using this library: a thread on [sky.melloo.me/community](https://sky.melloo.me/community),
-  GitHub Issues, or ask on Discord (**HexedMaya**). Prefer to ask privately instead?
+- Questions about using this library: a thread on [sky.melloo.me/community](https://sky.melloo.me/community)
+  or GitHub Issues. Prefer to ask privately instead?
   [sky.melloo.me/contact/ask](https://sky.melloo.me/contact/ask).
+- Want to ask me directly? Add me on Discord: **HexedMaya**.
 
 ## Code contributions
 

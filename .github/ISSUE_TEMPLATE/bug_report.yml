@@ -1,0 +1,36 @@
+name: Bug Report
+description: Something isn't working the way it should
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security issue? See [SECURITY.md](https://github.com/SkyMelloo/SkyMelloo/blob/main/SECURITY.md) instead of opening a public issue.
+  - type: input
+    id: version
+    attributes:
+      label: Library version
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what actually happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce (a minimal code snippet helps)
+      render: java
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant stack trace / log output
+      render: shell
+    validations:
+      required: false

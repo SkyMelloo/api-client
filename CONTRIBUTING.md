@@ -10,7 +10,7 @@
   [developer-api](https://github.com/SkyMelloo/developer-api).
 - Questions about using this library: a thread on [sky.melloo.me/community](https://sky.melloo.me/community)
   or GitHub Issues. Prefer to ask privately instead?
-  [sky.melloo.me/contact/ask](https://sky.melloo.me/contact/ask).
+  [sky.melloo.me/ticket](https://sky.melloo.me/ticket).
 - Want to ask me directly? Add me on Discord: **HexedMaya**.
 
 ## Code contributions

@@ -112,7 +112,7 @@ Every request goes through one shared queue (`SkyMellooClient.Builder#rateLimit`
 
 ## Questions
 
-Using this library and have a question? Start a thread on [sky.melloo.me/community](https://sky.melloo.me/community), or if you'd rather ask privately: [sky.melloo.me/contact/ask](https://sky.melloo.me/contact/ask).
+Using this library and have a question? Start a thread on [sky.melloo.me/community](https://sky.melloo.me/community), or if you'd rather ask privately: [sky.melloo.me/ticket](https://sky.melloo.me/ticket).
 
 ## License
 

@@ -30,6 +30,7 @@ public final class PresenceBatcher implements AutoCloseable {
 	private final Object lock = new Object();
 	private Map<String, List<CompletableFuture<Optional<PresenceApi.PresenceEntry>>>> pending = new LinkedHashMap<>();
 	private ScheduledFuture<?> flushTask;
+	private volatile boolean closed = false;
 
 	public PresenceBatcher(PresenceApi presenceApi) {
 		this(presenceApi, 75);
@@ -49,6 +50,10 @@ public final class PresenceBatcher implements AutoCloseable {
 	public CompletableFuture<Optional<PresenceApi.PresenceEntry>> query(String uuid) {
 		CompletableFuture<Optional<PresenceApi.PresenceEntry>> future = new CompletableFuture<>();
 		synchronized (lock) {
+			if (closed) {
+				future.completeExceptionally(new IllegalStateException("PresenceBatcher is closed"));
+				return future;
+			}
 			pending.computeIfAbsent(uuid, k -> new ArrayList<>()).add(future);
 			if (flushTask == null) {
 				flushTask = scheduler.schedule(this::flush, debounceMillis, TimeUnit.MILLISECONDS);
@@ -91,6 +96,26 @@ public final class PresenceBatcher implements AutoCloseable {
 
 	@Override
 	public void close() {
+		// Anything still sitting in pending is waiting on a flushTask that's about to be
+		// cancelled/never-run - without draining and failing those futures here, a caller
+		// awaiting one would hang forever (flush() runs on the scheduler thread, which
+		// shutdownNow() below tears down before that task gets a chance to fire).
+		Map<String, List<CompletableFuture<Optional<PresenceApi.PresenceEntry>>>> stranded;
+		synchronized (lock) {
+			closed = true;
+			if (flushTask != null) {
+				flushTask.cancel(false);
+				flushTask = null;
+			}
+			stranded = pending;
+			pending = new LinkedHashMap<>();
+		}
 		scheduler.shutdownNow();
+		IllegalStateException closedError = new IllegalStateException("PresenceBatcher is closed");
+		for (List<CompletableFuture<Optional<PresenceApi.PresenceEntry>>> futures : stranded.values()) {
+			for (CompletableFuture<Optional<PresenceApi.PresenceEntry>> future : futures) {
+				future.completeExceptionally(closedError);
+			}
+		}
 	}
 }
